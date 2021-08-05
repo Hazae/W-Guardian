@@ -1,0 +1,328 @@
+@import url('godo-glacial.css');
+/* @import url('notosanskr.css'); */
+@import url('../bootstrap/css/bootstrap.min.css');
+@import url('reset.css');
+@import url('all.min.css');
+@import url('animate.css');
+@import url('weather-icons.css');
+@import url('weather-icons-wind.css');
+@import url('slick.css');
+@import url('slick-theme.css');
+
+body{
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    color:#233947;
+}
+a, a:link{
+    color:#233947;
+    text-decoration:none;
+}
+a:hover{
+    color: #233947;
+}
+.kor{
+    font-family: '고도 M', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+.kor-bold{
+    font-family: '고도 B', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+.eng{
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+.eng-bold{
+    font-family: 'Glacial Indifference', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+}
+/* 로딩 */
+.loading{
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+}
+.loading div{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+    background:transparent;
+}
+.display-none{
+    display:none;
+}
+/* container */
+.container-top{
+    width: 100%;
+    height: 100vh;
+    /* background-position: center bottom;
+    background-repeat: no-repeat; */
+    /* contain은 어느 한쪽만 꽉 차게 하는 것 */
+    /* background-size: contain; */
+    position: relative;
+    min-height: 800px;
+    overflow: hidden;
+    background: #f6e8cf;
+    background-size:contain;
+}
+input.searchbox{
+    background-color: #FFF6D3;
+}
+/* 메뉴 */
+.nav-text{
+    margin-top: 1.25rem;
+    margin-left: 1.25rem;
+}
+.nav-text a{
+    text-decoration: underline;
+    margin-right: 1.7rem;
+    color: #233947;
+}
+.nav-text a:hover{
+    color: #233947;
+}
+/* 검색창 */
+.search-box{
+    width: 91.5%;
+    height: 10rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ECF5E9;
+    z-index: 10;
+    position:relative;
+    top: -1.25rem;
+    display: flex;
+    display: none;
+}
+.search-list{
+    width: 100%;
+}
+.search-city{
+    width: 100%;
+    height: 2.19rem;
+    box-shadow: 0px 1px 3px 1px rgba(0,0,0,0.2);
+}
+.search-list svg{
+    color: #233947;
+}
+.search-list ul{
+    width: 100%;
+    height: 70%;
+    margin:0;
+    padding: 0;
+    list-style-type: none;
+    position: absolute;
+    top: 3rem;
+    left: 1.25rem;
+}
+.search-list ul li:not(:last-child){
+    height: 1.8rem;
+    line-height: 1.8rem;
+    border-bottom: .5px dotted #9C9C9C;
+    width: 90%;
+}
+.search-list ul li:last-child{
+    height: 1.6rem;
+    line-height: 2.5rem;
+    width: 90%;
+}
+.search-list ul li span{
+    background-color: rgba(255,255,255,0.5);
+    margin-right: 1.6rem;
+    padding: .2rem .5rem .2rem .4rem;
+    text-align: left;
+}
+.search-list ul li span a{
+    padding-right: .5rem;
+}
+.search-list ul li span img{
+    cursor: pointer;
+}
+a.search{
+    margin-right: 1.25rem;
+    font-size: 1.5rem;
+    position: absolute;
+    color: #233947;
+    top: 1.25rem;
+    right: 0;
+    z-index:15;
+}
+/* 날짜, 도시 이름 */
+.now-date{
+    font-size: 1.5rem;
+    position: absolute;
+    top: 4.5rem;
+    left: 1.25rem;
+    background-color: #fff;
+    /* width: 8.5rem;
+    height: 2rem; */
+    text-align: center;
+    line-height: 2rem;
+    padding: .15rem;
+}
+.city{
+    font-size: 1.5rem;
+    position: absolute;
+    top: 7rem;
+    left: 1.25rem;
+    background-color: #fff;
+    /* height: 2rem;
+    width: 10.5rem; */
+    text-align: center;
+    line-height: 2rem;
+    padding: .2rem;
+}
+/* 날씨 아이콘 */
+.icon-box{
+    width: 100%;
+    height: 20rem;
+    position: absolute;
+    top: 8rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.w-icon{
+    position: absolute;
+    top: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.bar{
+    width: 10.5rem;
+    height: 5px;
+    background-color: #233947;
+    position:absolute;
+    right: 0;
+    top: 17.5rem;
+}
+/* 하단 기온, 날씨 표기 */
+.text{
+    position:absolute;
+    top: 65%;
+    right: 1.25rem;
+    font-size:2rem;
+}
+.temp{
+    position: absolute;
+    top: 70%;
+    right: 1.25rem;
+    font-size: 3rem;
+}
+
+/****************************************************week*****************************************************/
+.week-box{
+    width:40%;
+    height:100%;
+    position:absolute;
+    top:0;
+}
+.week-box h1{
+    width: 40%;
+    height: 5%;
+    margin-top: 3.75rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:center;
+    font-size: 1.5rem;
+    margin-bottom: 13%;
+}
+.box1{
+    background:#F6E8C1;
+    left:0;
+    z-index:0;
+}
+.box2{
+    background:#DBE1DA;
+    left:40%;
+    z-index:1;
+    box-shadow:-10px 0 10px 0 rgba(0,0,0,0.4);
+}
+.box3{
+    background:#233947;
+    left:60%;
+    z-index:2;
+    box-shadow:-10px 0 10px 0 rgba(0,0,0,0.4);
+    color: #fff;
+}
+.box4{
+    background:#F6E8C1;
+    left:80%;
+    z-index:3;
+    box-shadow:-10px 0 10px 0 rgba(0,0,0,0.4);
+}
+.temp2{
+    font-size: 2.5rem;
+    width: 40%;
+    height: 7.24%;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.wicon-thumb{
+    width: 140px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 15%;
+}
+.pbox{
+    width: 136px;
+    height: 52px;
+    margin-top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255,255,255,0.62);
+}
+.pbox p{
+    text-align: center;
+    line-height: 52px;
+    color: #233947;
+}
+.high-t, .low-t{
+    text-align: center;
+}
+.high-t{
+    margin-top: 20%;
+}
+.low-t{
+    margin-top: 10%;
+}
+.temp-bar{
+    margin: 8% auto;
+    width: 20px;
+    height: 20%;
+    background-color: #fff;
+    border-radius: 9px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
+    position:relative;
+}
+.high-bar{
+    width: 20px;
+    height: 60%;
+    background-color: #CC3216;
+    border-radius: 9px;
+    position:absolute;
+    bottom: 0;
+    left: 0;
+}
+.low-bar{
+    width: 20px;
+    height: 40%;
+    background-color: #094063;
+    border-radius: 9px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
