@@ -16,7 +16,7 @@ $(function(){
 
     function getPos(lat, lon, city){
         var apiurl = "http://api.openweathermap.org/data/2.5/forecast";
-        var apikey = '3dc104dcf1e00fef483278d26089177e';
+        var apikey = '';
         var apidata;
         //city값이 담겼으면 지역을 검색해서 날씨 제공
         if(city){
