@@ -166,9 +166,6 @@ $(function(){
 
                 var mxlength = rs.list.length;
                 for (var i = 0; i < mxlength; i++) {
-                    // var mdt = eval(nowdt - rs.list[i].dt);    if(mdt<0){        mdt = -mdt;    }
-                    // ndt.push(mdt);
-
                     var myDate = new Date(rs.list[i].dt * 1000);
                     // console.log(myDate);  console.log(rs.list[i].dt_txt);
                     // console.log(rs.list[i].main.temp);
