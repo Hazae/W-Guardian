@@ -1,31 +1,4 @@
 $(function(){
-  // $('a.search').click(function(){
-  //   $('.searchbox').animate({
-  //       width : '20em'
-  //   }).css({
-  //       border: '2px solid #146992' ,
-  //       backgroundColor: 'rgba(255,255,255,0.4)'
-  //   });
-  // });
-  // $('.searchbox').on('keypress', function(e){
-  //     if(e.which == 13 && !e.shiftKey){
-  //         var key = $(this).val();
-  //         $(this).animate({
-  //             width: 0
-  //         }, 300).css({
-  //             border:'none',
-  //             backgroundColor:'transparent'
-  //         });
-  //         getPos('', '', key);
-  //     };
-  // });
-
-  // $('.searchbox').on('keyup blur', function(e){
-  //     var v = $(this).val();
-  //     //검색창에 한글 못 쓰게 막는 명령
-  //     $(this).val(v.replace(/[^a-zA-A-_0-9]/g,''));
-  // });
-
   var myLat = 0, myLng = 0;
   //현재 위치추적 동의하는지 물어보고 차단하면 if문 실행되지 않음.
   if(navigator.geolocation){
@@ -126,12 +99,6 @@ $(function(){
 
           var mxlength = rs.list.length;       
           for(var i=0; i<mxlength; i++){
-          //    var mdt = eval(nowdt - rs.list[i].dt);
-          //    if(mdt<0){
-          //        mdt = -mdt;
-          //    }
-          //    ndt.push(mdt);
-
             var myDate = new Date(rs.list[i].dt*1000);
               //  console.log(myDate);
               //  console.log(rs.list[i].dt_txt);
@@ -179,9 +146,6 @@ $(function(){
   }
   return $opt; 
   }
-
-  // $('.slider').slick(getSliderSetting());
-  // }
 });
 
 function wethericon(icon){
