@@ -8,7 +8,7 @@ $(function(){
             //console.log(myLat, myLng);
             getPos(myLat, myLng, '');
         },function(err){
-            if(err.code==1){
+            if(err.code === 1){
                 console.log('에러');
             }
         });
@@ -39,17 +39,7 @@ $(function(){
         console.log(apidata);
 
         var weeks = ['일', '월', '화', '수', '목', '금', '토'];
-        var $opt = {
-            dots: false,
-            infinite: true,
-            slidesToShow: 4,
-            slidesToScroll: 3,
-            autoplay: true,
-            autoplaySpeed: 3000
-        }
-    
-      //console.log(new Date(1621922400*1000));
-      //console.log(parseInt(new Date()/1000));
+
         $.ajax({
             url: apiurl,
             dataType: "json",
@@ -203,24 +193,24 @@ $(function(){
                 $('.loading').addClass('display-none');
             }
         });
-        function getSliderSetting(){
-            let $opt = {
-                slidesToShow: 2,
-                slidesToScroll: 2,
-                dots: false,
-                autoplay:true,
-                autoplaySpeed: 3000,
-                infinite: true,
-                centerMode: true
-            }
-            return $opt; 
-        }
+        // function getSliderSetting(){
+        //     let $opt = {
+        //         slidesToShow: 2,
+        //         slidesToScroll: 2,
+        //         dots: false,
+        //         autoplay:true,
+        //         autoplaySpeed: 3000,
+        //         infinite: true,
+        //         centerMode: true
+        //     }
+        //     return $opt;
+        // }
     }
 
     $('.week-box').click(function(){
         var box = $(this).data('box');
         
-        if(box=='a'){
+        if(box==='a'){
             $('.box2').animate({
                 'left': '40%'
             },500);
@@ -230,7 +220,7 @@ $(function(){
             $('.box4').animate({
                 'left': '80%'
             },500);
-        }else if(box=='b'){
+        }else if(box==='b'){
             $('.box2').animate({
                 'left': '20%'
             },500);
@@ -240,7 +230,7 @@ $(function(){
             $('.box4').animate({
                 'left': '80%'
             },500);
-        }else if(box=='c'){
+        }else if(box==='c'){
          $('.box2').animate({
                 'left': '20%'
             },500);
