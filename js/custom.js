@@ -15,7 +15,7 @@ $(function(){
 
   function getPos(lat, lon, city){
     const apiUrl = "http://api.openweathermap.org/data/2.5/forecast";
-    const apiKey = '';
+    const apiKey = '3dc104dcf1e00fef483278d26089177e';
     let apiData;
     if(city){
       apiData = {
@@ -56,7 +56,7 @@ $(function(){
         let nTimes = nDate.getHours();
         let nowDate = nMonth + "." + nDt + "." + nWeeks + ". " + nTimes + "시";
         $('.now-date').html(nowDate);
-        let icon = '<img src="../images/' + rs
+        let icon = '<img src="images/' + rs
           .list[0]
           .weather[0]
           .icon + '.png" alt="' + rs
@@ -156,7 +156,7 @@ $(function(){
           // let myYear = myDate.getFullYear();
           // let myMonth = myDate.getMonth() + 1;
           let myDt = myDate.getDate();
-          let myWeeks = weeks[myDate.getDay()];
+          let myWeeks = weeks[myDt];
           let myTimes = myDate.getHours();
           let temps = Number(rs.list[i].main.temp).toFixed(1) + "ºc";
           let icons = weatherIcon(rs.list[i].weather[0].icon);
@@ -228,58 +228,58 @@ function weatherIcon(icon){
   let wicon;
   switch (icon) {
     case '01d':
-      wicon = '<img src="../images/thumb/01d.png" alt="sunny">';
+      wicon = '<img src="images/thumb/01d.png" alt="sunny">';
       break;
     case '02d':
-      wicon = '<img src="../images/thumb/02d.png" alt="cloudy">';
+      wicon = '<img src="images/thumb/02d.png" alt="cloudy">';
       break;
     case '03d':
-      wicon = '<img src="../images/thumb/03d.png" alt="cloud">';
+      wicon = '<img src="images/thumb/03d.png" alt="cloud">';
       break;
     case '04d':
-      wicon = '<img src="../images/thumb/04d.png" alt="cloudy">';
+      wicon = '<img src="images/thumb/04d.png" alt="cloudy">';
       break;
     case '09d':
-      wicon = '<img src="../images/thumb/09d.png" alt="rain">';
+      wicon = '<img src="images/thumb/09d.png" alt="rain">';
       break;
     case '10d':
-      wicon = '<img src="../images/thumb/10d.png" alt="rain">';
+      wicon = '<img src="images/thumb/10d.png" alt="rain">';
       break;
     case '11d':
-      wicon = '<img src="../images/thumb/11d.png" alt="thunderstorm">';
+      wicon = '<img src="images/thumb/11d.png" alt="thunderstorm">';
       break;
     case '13d':
-      wicon = '<img src="../images/thumb/13d.png" alt="snow">';
+      wicon = '<img src="images/thumb/13d.png" alt="snow">';
       break;
     case '50d':
-      wicon = '<img src="../images/thumb/50d.png" alt="windy">';
+      wicon = '<img src="images/thumb/50d.png" alt="windy">';
       break;
     case '01n':
-      wicon = '<img src="../images/thumb/01n.png" alt="night-clear">';
+      wicon = '<img src="images/thumb/01n.png" alt="night-clear">';
       break;
     case '02n':
-      wicon = '<img src="../images/thumb/02n.png" alt="cloudy">';
+      wicon = '<img src="images/thumb/02n.png" alt="cloudy">';
       break;
     case '03n':
-      wicon = '<img src="../images/thumb/03n.png" alt="cloud">';
+      wicon = '<img src="images/thumb/03n.png" alt="cloud">';
       break;
     case '04n':
-      wicon = '<img src="../images/thumb/04n.png" alt="cloudy">';
+      wicon = '<img src="images/thumb/04n.png" alt="cloudy">';
       break;
     case '09n':
-      wicon = '<img src="../images/thumb/09n.png" alt="rain">';
+      wicon = '<img src="images/thumb/09n.png" alt="rain">';
       break;
     case '10n':
-      wicon = '<img src="../images/thumb/10n.png" alt="rain">';
+      wicon = '<img src="images/thumb/10n.png" alt="rain">';
       break;
     case '11n':
-      wicon = '<img src="../images/thumb/11n.png" alt="thunderstorm">';
+      wicon = '<img src="images/thumb/11n.png" alt="thunderstorm">';
       break;
     case '13n':
-      wicon = '<img src="../images/thumb/13n.png" alt="snow">';
+      wicon = '<img src="images/thumb/13n.png" alt="snow">';
       break;
     case '50n':
-      wicon = '<img src="../images/thumb/50n.png" alt="windy">';
+      wicon = '<img src="images/thumb/50n.png" alt="windy">';
       break;
   }
   return wicon;
