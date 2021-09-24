@@ -15,7 +15,7 @@ $(function(){
 
   function getPos(lat, lon, city){
     const apiUrl = "http://api.openweathermap.org/data/2.5/forecast";
-    const apiKey = '3dc104dcf1e00fef483278d26089177e';
+    const apiKey = '';
     let apiData;
     if(city){
       apiData = {
