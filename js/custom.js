@@ -56,7 +56,7 @@ $(function(){
         let nTimes = nDate.getHours();
         let nowDate = nMonth + "." + nDt + "." + nWeeks + ". " + nTimes + "시";
         $('.now-date').html(nowDate);
-        let icon = '<img src="images/' + rs
+        let icon = '<img src="../images/' + rs
           .list[0]
           .weather[0]
           .icon + '.png" alt="' + rs
@@ -228,58 +228,58 @@ function weatherIcon(icon){
   let wicon;
   switch (icon) {
     case '01d':
-      wicon = '<img src="images/thumb/01d" alt="sunny">';
+      wicon = '<img src="../images/thumb/01d.png" alt="sunny">';
       break;
     case '02d':
-      wicon = '<img src="images/thumb/02d" alt="cloudy">';
+      wicon = '<img src="../images/thumb/02d.png" alt="cloudy">';
       break;
     case '03d':
-      wicon = '<img src="images/thumb/03d" alt="cloud">';
+      wicon = '<img src="../images/thumb/03d.png" alt="cloud">';
       break;
     case '04d':
-      wicon = '<img src="images/thumb/04d" alt="cloudy">';
+      wicon = '<img src="../images/thumb/04d.png" alt="cloudy">';
       break;
     case '09d':
-      wicon = '<img src="images/thumb/09d" alt="rain">';
+      wicon = '<img src="../images/thumb/09d.png" alt="rain">';
       break;
     case '10d':
-      wicon = '<img src="images/thumb/10d" alt="rain">';
+      wicon = '<img src="../images/thumb/10d.png" alt="rain">';
       break;
     case '11d':
-      wicon = '<img src="images/thumb/11d" alt="thunderstorm">';
+      wicon = '<img src="../images/thumb/11d.png" alt="thunderstorm">';
       break;
     case '13d':
-      wicon = '<img src="images/thumb/13d" alt="snow">';
+      wicon = '<img src="../images/thumb/13d.png" alt="snow">';
       break;
     case '50d':
-      wicon = '<img src="images/thumb/50d" alt="windy">';
+      wicon = '<img src="../images/thumb/50d.png" alt="windy">';
       break;
     case '01n':
-      wicon = '<img src="images/thumb/01n" alt="night-clear">';
+      wicon = '<img src="../images/thumb/01n.png" alt="night-clear">';
       break;
     case '02n':
-      wicon = '<img src="images/thumb/02n" alt="cloudy">';
+      wicon = '<img src="../images/thumb/02n.png" alt="cloudy">';
       break;
     case '03n':
-      wicon = '<img src="images/thumb/03n" alt="cloud">';
+      wicon = '<img src="../images/thumb/03n.png" alt="cloud">';
       break;
     case '04n':
-      wicon = '<img src="images/thumb/04n" alt="cloudy">';
+      wicon = '<img src="../images/thumb/04n.png" alt="cloudy">';
       break;
     case '09n':
-      wicon = '<img src="images/thumb/09n" alt="rain">';
+      wicon = '<img src="../images/thumb/09n.png" alt="rain">';
       break;
     case '10n':
-      wicon = '<img src="images/thumb/10n" alt="rain">';
+      wicon = '<img src="../images/thumb/10n.png" alt="rain">';
       break;
     case '11n':
-      wicon = '<img src="images/thumb/11n" alt="thunderstorm">';
+      wicon = '<img src="../images/thumb/11n.png" alt="thunderstorm">';
       break;
     case '13n':
-      wicon = '<img src="images/thumb/13n" alt="snow">';
+      wicon = '<img src="../images/thumb/13n.png" alt="snow">';
       break;
     case '50n':
-      wicon = '<img src="images/thumb/50n" alt="windy">';
+      wicon = '<img src="../images/thumb/50n.png" alt="windy">';
       break;
   }
   return wicon;
