@@ -2,33 +2,33 @@
   font-family: "Godo";
   font-style: normal;
   font-weight: 400;
-  src: url("../webfonts/GodoM.otf") format("otf");
+  src: url("../fonts/GodoM.otf") format("otf");
 }
 @font-face {
   font-family: "Godo";
   font-style: normal;
   font-weight: 700;
-  src: url("../webfonts/GodoB.otf") format("otf");
+  src: url("../fonts/GodoB.otf") format("otf");
 }
 @font-face {
   font-family: "Godo";
   font-style: normal;
   font-weight: normal;
-  src: url("../webfonts/GlacialIndifference-Regular.woff2") format("woff2"),
-    url("../webfonts/GlacialIndifference-Regular.woff") format("woff"),
-    url("../webfonts/GlacialIndifference-Regular.otf") format("otf");
+  src: url("../fonts/GlacialIndifference-Regular.woff2") format("woff2"),
+    url("../fonts/GlacialIndifference-Regular.woff") format("woff"),
+    url("../fonts/GlacialIndifference-Regular.otf") format("otf");
 }
 @font-face {
   font-family: "Godo";
   font-style: normal;
   font-weight: bold;
-  src: url("../webfonts/GlacialIndifference-Bold.woff2") format("woff2"),
-    url("../webfonts/GlacialIndifference-Bold.woff") format("woff"),
-    url("../webfonts/GlacialIndifference-Bold.otf") format("otf");
+  src: url("../fonts/GlacialIndifference-Bold.woff2") format("woff2"),
+    url("../fonts/GlacialIndifference-Bold.woff") format("woff"),
+    url("../fonts/GlacialIndifference-Bold.otf") format("otf");
 }
 @font-face {
   font-family: "Godo";
   font-style: italic;
   font-weight: normal;
-  src: url("../webfonts/GlacialIndifference-Italic.otf") format("otf");
+  src: url("../fonts/GlacialIndifference-Italic.otf") format("otf");
 }
