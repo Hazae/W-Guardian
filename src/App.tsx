@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-// import { useState } from "react";
+
 import "./App.css";
 import Home from "./pages/home";
 
