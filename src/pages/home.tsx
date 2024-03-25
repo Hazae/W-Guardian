@@ -1,5 +1,6 @@
 // import { useQuery } from "react-query";
 import styled from "styled-components";
+import { useCurrentLocation, useWatchLocation } from "../hooks/useGeoLocation";
 
 // async function getWeatherData(lat: string, lon: string) {
 //   const res = await fetch(
@@ -11,15 +12,30 @@ import styled from "styled-components";
 //   return res.json();
 // }
 
-const Home = (lat: string, lon: string) => {
-  // const { data, isError, isLoading } = useQuery("", getWeatherData(lat, lon));
+const geolocationOptions = {
+  enableHighAccuracy: true,
+  timeout: 1000 * 10,
+  maximumAge: 1000 * 3600 * 24,
+};
 
-  return <Container className="mx-auto my-auto">index</Container>;
+const Home = () => {
+  // const { data, isError, isLoading } = useQuery(
+  //   "geolocation",
+  //   useCurrentLocation(geolocationOptions)
+  // );
+
+  const { loc, error } = useCurrentLocation(geolocationOptions);
+
+  return (
+    <Container className="mx-auto my-auto">
+      {loc ? `${loc.latitude}` : `${error}`}
+    </Container>
+  );
 };
 
 const Container = styled.div`
-  width: 88.88vw;
-  height: 94.44vh;
+  width: 100vw;
+  height: 100vh;
   background-color: #f6e8c1;
   font-size: 1rem;
 `;

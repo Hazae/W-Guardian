@@ -10,6 +10,7 @@ interface currentLoc {
   longitude: number;
 }
 
+/*****************************************현재 위치 가져오기***************************************** */
 export const useCurrentLocation = (options = {}) => {
   // location 정보 저장
   const [loc, setLoc] = useState<currentLoc>();
@@ -47,6 +48,7 @@ export const useCurrentLocation = (options = {}) => {
   return { loc, error };
 };
 
+/*****************************************위치 모니터링***************************************** */
 export const useWatchLocation = (options = {}) => {
   // 내 위치 정보 저장
   const [loc, setLoc] = useState<currentLoc>();
