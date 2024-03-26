@@ -1,34 +1,20 @@
 // import { useQuery } from "react-query";
 import styled from "styled-components";
-import { useCurrentLocation, useWatchLocation } from "../hooks/useGeoLocation";
-
-// async function getWeatherData(lat: string, lon: string) {
-//   const res = await fetch(
-//     `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${
-//       import.meta.env.VITE_WEATHER_KEY
-//     }`
-//   );
-
-//   return res.json();
-// }
-
-const geolocationOptions = {
-  enableHighAccuracy: true,
-  timeout: 1000 * 10,
-  maximumAge: 1000 * 3600 * 24,
-};
+// import { useCurrentLocation, useWatchLocation } from "../hooks/useGeoLocation";
+import GetWeather from "@/components/weather-data";
+import CityName from "@/components/city-name";
+// import OpenWeatherMap from "openweathermap-ts";
 
 const Home = () => {
-  // const { data, isError, isLoading } = useQuery(
-  //   "geolocation",
-  //   useCurrentLocation(geolocationOptions)
-  // );
+  // const { loc, error } = useCurrentLocation(geolocationOptions);
+  // getWeather();
 
-  const { loc, error } = useCurrentLocation(geolocationOptions);
+  GetWeather();
 
   return (
     <Container className="mx-auto my-auto">
-      {loc ? `${loc.latitude}` : `${error}`}
+      <GetWeather />
+      <CityName />
     </Container>
   );
 };
