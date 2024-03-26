@@ -1,11 +1,18 @@
 import { useQuery, QueryFunctionContext } from "react-query";
 import OpenWeatherMap from "openweathermap-ts";
+import { useCurrentLocation } from "../hooks/useGeoLocation";
 
-const apiKey = import.meta.env.VITE_WEATHER_KEY as string;
+const apiKey = import.meta.env.VITE_WEATHER_KEY;
 
 interface WeatherData {
   name: string;
 }
+
+const geolocationOptions = {
+  enableHighAccuracy: true,
+  timeout: 1000 * 10, // 10초
+  maximumAge: 1000 * 3600 * 24, // 24시간
+};
 
 const fetchWeather = async ({
   queryKey,
@@ -19,8 +26,6 @@ const fetchWeather = async ({
     lat,
     lon
   );
-
-  console.log(response);
   return response;
 };
 
@@ -30,20 +35,22 @@ interface CityNameProps {
 }
 
 const CityName: React.FC<CityNameProps> = ({ lat, lon }) => {
+  const { loc, error: locationError } = useCurrentLocation(geolocationOptions);
+
   const {
     data: weatherData,
     isLoading,
     isError,
     error,
-  } = useQuery<WeatherData, Error>(
-    ["get-weather-data", { lat, lon }],
+  } = useQuery(
+    ["get-weather-data", { lat: loc?.latitude, lon: loc?.longitude }],
     fetchWeather,
     {
-      enabled: !!lat && !!lon, // lat과 lon이 있을 때만 쿼리 실행
+      enabled: !!loc, // loc이 있을 때만 쿼리 실행
+      retry: 1,
+      staleTime: 1000 * 60, // 1분
     }
   );
-
-  console.log(weatherData);
 
   if (isLoading) return <div>로딩 중...</div>;
   if (isError) return <div>에러 발생: {error?.message}</div>;
