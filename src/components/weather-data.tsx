@@ -1,8 +1,12 @@
 import OpenWeatherMap from "openweathermap-ts";
-import { useQuery } from "react-query";
+import { useQuery, QueryFunctionContext } from "react-query";
 import { useCurrentLocation } from "../hooks/useGeoLocation";
 
 const apiKey = import.meta.env.VITE_WEATHER_KEY;
+
+interface WeatherData {
+  name: string;
+}
 
 const geolocationOptions = {
   enableHighAccuracy: true,
@@ -10,8 +14,13 @@ const geolocationOptions = {
   maximumAge: 1000 * 3600 * 24, // 24시간
 };
 
-const fetchWeather = async ({ queryKey }) => {
-  const [_key, { lat, lon }] = queryKey;
+const fetchWeather = async ({
+  queryKey,
+}: QueryFunctionContext): Promise<WeatherData> => {
+  const [key, { lat, lon }] = queryKey as [
+    string,
+    { lat: number; lon: number }
+  ];
   const openWeather = new OpenWeatherMap({ apiKey: apiKey });
   const response = await openWeather.getCurrentWeatherByGeoCoordinates(
     lat,
@@ -19,7 +28,6 @@ const fetchWeather = async ({ queryKey }) => {
   );
   return response;
 };
-
 const GetWeather = () => {
   const { loc, error: locationError } = useCurrentLocation(geolocationOptions);
 
@@ -43,16 +51,7 @@ const GetWeather = () => {
   if (isError)
     return <div>날씨 정보를 불러오는 데 실패했습니다: {error.message}</div>;
 
-  // 날씨 정보를 화면에 표시
-  return (
-    <div>
-      <h2>현재 날씨 정보</h2>
-      <p>도시: {weatherData.name}</p>
-      <p>온도: {weatherData.main.temp}°C</p>
-      <p>날씨: {weatherData.weather[0].main}</p>
-      <p>풍속: {weatherData.wind.speed}m/s</p>
-    </div>
-  );
+  return weatherData;
 };
 
 export default GetWeather;
