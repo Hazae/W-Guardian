@@ -1,8 +1,7 @@
+@import url("assets/css/godo-glacial.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url("godo-glacial.css");
 
 @layer base {
   :root {
@@ -75,4 +74,8 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+body {
+  font-family: "Godo", sans-serif;
 }
