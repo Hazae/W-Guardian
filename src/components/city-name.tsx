@@ -8,7 +8,6 @@ const CityName: React.FC = () => {
 };
 
 const CityNameCon = styled.div`
-  font-family: "Godo";
   font-size: 1.5rem;
   position: absolute;
   top: 4.5rem;

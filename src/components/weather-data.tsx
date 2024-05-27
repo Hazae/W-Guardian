@@ -31,10 +31,18 @@ const fetchWeather = async ({
     string,
     { lat: number; lon: number }
   ];
-  const openWeather = new OpenWeatherMap({ apiKey: apiKey });
+
+  const openWeather = await new OpenWeatherMap({
+    apiKey: apiKey,
+    units: "metric",
+    language: "kr"
+  });
+
+  console.log(openWeather);
+
   const response = await openWeather.getCurrentWeatherByGeoCoordinates(
     lat,
-    lon
+    lonz
   );
   return response;
 };
@@ -62,8 +70,6 @@ const GetWeather = () => {
   if (!loc || isLoading) return <div>날씨 정보를 불러오는 중...</div>;
   if (isError)
     return <div>날씨 정보를 불러오는 데 실패했습니다: {error.response?.data.message || error.message}</div>;
-
-    console.log(weatherData);
 
   return weatherData;
 };
