@@ -38,11 +38,11 @@ const fetchWeather = async ({
     language: "kr"
   });
 
-  console.log(openWeather);
+  // console.log(openWeather);
 
   const response = await openWeather.getCurrentWeatherByGeoCoordinates(
     lat,
-    lonz
+    lon
   );
   return response;
 };
