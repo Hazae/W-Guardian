@@ -8,6 +8,16 @@ interface WeatherData {
   name: string;
 }
 
+interface WeatherAPIError extends Error {
+  response?: {
+    status: number;
+    data: {
+      code: string;
+      message: string;
+    }
+  }
+}
+
 const geolocationOptions = {
   enableHighAccuracy: true,
   timeout: 1000 * 10, // 10초
@@ -28,15 +38,17 @@ const fetchWeather = async ({
   );
   return response;
 };
+
 const GetWeather = () => {
   const { loc, error: locationError } = useCurrentLocation(geolocationOptions);
 
+  // 구조분해할당으로 data 속성을 weatherData라는 변수 이름으로 할당
   const {
     data: weatherData,
     isLoading,
     isError,
     error,
-  } = useQuery(
+  } = useQuery<WeatherData, WeatherAPIError>(
     ["get-weather-data", { lat: loc?.latitude, lon: loc?.longitude }],
     fetchWeather,
     {
@@ -49,7 +61,9 @@ const GetWeather = () => {
   if (locationError) return <div>위치 정보를 불러오는 데 실패했습니다.</div>;
   if (!loc || isLoading) return <div>날씨 정보를 불러오는 중...</div>;
   if (isError)
-    return <div>날씨 정보를 불러오는 데 실패했습니다: {error.message}</div>;
+    return <div>날씨 정보를 불러오는 데 실패했습니다: {error.response?.data.message || error.message}</div>;
+
+    console.log(weatherData);
 
   return weatherData;
 };
