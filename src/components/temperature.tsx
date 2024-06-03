@@ -12,10 +12,12 @@ const Temperature: React.FC = () => {
   const { loc } = useCurrentLocation(geolocationOptions); 
   const { data, isLoading, error } = useWeather(loc?.latitude, loc?.longitude);
 
+  const temperature = data?.main?.temp as number; // 타입 단언
+
   if (isLoading) return <div>로딩 중...</div>;
   if (error) return <div>오류 발생: {error.message}</div>;
 
-  return <CityTempCon>{data?.main?.temp}°C</CityTempCon>;
+  return <CityTempCon>{Math.floor(temperature)}°C</CityTempCon>;
 };
 
 const CityTempCon = styled.div`
