@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import CityName from "@/components/city-name";
+import Temperature from "@/components/temperature";
 
 const Home = () => {
   return (
     <Container className="mx-auto my-auto">
       <CityName />
+      <Temperature />
     </Container>
   );
 };
