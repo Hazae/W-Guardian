@@ -5,6 +5,9 @@ const apiKey = import.meta.env.VITE_WEATHER_KEY;
 
 export interface WeatherData {
   name: string;
+  main: {
+    temp: number;
+  };
 }
 
 export const fetchWeather = async ({
