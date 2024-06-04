@@ -9,12 +9,12 @@ const geolocationOptions = {
 };
 
 const CityName: React.FC = () => {
-  const { loc } = useCurrentLocation(geolocationOptions); 
+  const { loc } = useCurrentLocation(geolocationOptions);
   const { data, isLoading, error } = useWeather(loc?.latitude, loc?.longitude);
-  let city = '';
+  let city = "";
 
-  if(data?.name.includes("-si")) city = data?.name.replace("-si", ""); 
-  else if(data?.name.includes("-dong"))  city = data?.name.replace("-dong", "");
+  if (data?.name.includes("-si")) city = data?.name.replace("-si", "");
+  else if (data?.name.includes("-dong")) city = data?.name.replace("-dong", "");
 
   if (isLoading) return <div>로딩 중...</div>;
   if (error) return <div>오류 발생: {error.message}</div>;
@@ -25,7 +25,7 @@ const CityName: React.FC = () => {
 const CityNameCon = styled.div`
   font-size: 1.5rem;
   position: absolute;
-  top: 4.5rem;
+  top: 5rem;
   left: 1.25rem;
   background-color: #fff;
   text-align: center;
