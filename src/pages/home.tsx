@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import CityName from "@/components/city-name";
 import Temperature from "@/components/temperature";
+import TodayDate from "@/components/date";
 
 const Home = () => {
   return (
     <Container className="mx-auto my-auto">
+      <TodayDate />
       <CityName />
       <Temperature />
     </Container>
