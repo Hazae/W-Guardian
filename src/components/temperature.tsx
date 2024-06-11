@@ -1,18 +1,12 @@
 import styled from "styled-components";
-import { useCurrentLocation } from "@/hooks/useGeoLocation";
-import useWeather from "@/hooks/useWeather";
+import { WeatherProps } from "../type/types";
 
-const geolocationOptions = {
-  enableHighAccuracy: true,
-  timeout: 1000 * 10, // 10초
-  maximumAge: 1000 * 3600 * 24, // 24시간
-};
-
-const Temperature: React.FC = () => {
-  const { loc } = useCurrentLocation(geolocationOptions); 
-  const { data, isLoading, error } = useWeather(loc?.latitude, loc?.longitude);
-
-  const temperature = data?.main?.temp as number; // 타입 단언
+const Temperature: React.FC<WeatherProps> = ({
+  weatherData,
+  isLoading,
+  error,
+}) => {
+  const temperature = weatherData?.main?.temp as number; // 타입 단언
 
   if (isLoading) return <div>로딩 중...</div>;
   if (error) return <div>오류 발생: {error.message}</div>;

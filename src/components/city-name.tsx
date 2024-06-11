@@ -1,20 +1,17 @@
 import styled from "styled-components";
-import { useCurrentLocation } from "@/hooks/useGeoLocation";
-import useWeather from "@/hooks/useWeather";
+import { WeatherProps } from "../type/types";
 
-const geolocationOptions = {
-  enableHighAccuracy: true,
-  timeout: 1000 * 10, // 10초
-  maximumAge: 1000 * 3600 * 24, // 24시간
-};
-
-const CityName: React.FC = () => {
-  const { loc } = useCurrentLocation(geolocationOptions);
-  const { data, isLoading, error } = useWeather(loc?.latitude, loc?.longitude);
+const CityName: React.FC<WeatherProps> = ({
+  weatherData,
+  isLoading,
+  error,
+}) => {
   let city = "";
 
-  if (data?.name.includes("-si")) city = data?.name.replace("-si", "");
-  else if (data?.name.includes("-dong")) city = data?.name.replace("-dong", "");
+  if (weatherData?.name.includes("-si"))
+    city = weatherData?.name.replace("-si", "");
+  else if (weatherData?.name.includes("-dong"))
+    city = weatherData?.name.replace("-dong", "");
 
   if (isLoading) return <div>로딩 중...</div>;
   if (error) return <div>오류 발생: {error.message}</div>;
