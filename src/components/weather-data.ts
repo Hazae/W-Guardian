@@ -1,14 +1,8 @@
 import OpenWeatherMap from "openweathermap-ts";
 import { QueryFunctionContext } from "react-query";
+import { WeatherData } from "../type/types";
 
 const apiKey = import.meta.env.VITE_WEATHER_KEY;
-
-export interface WeatherData {
-  name: string;
-  main: {
-    temp: number;
-  };
-}
 
 export const fetchWeather = async ({
   queryKey,
@@ -21,7 +15,7 @@ export const fetchWeather = async ({
   const openWeather = await new OpenWeatherMap({
     apiKey: apiKey,
     units: "metric",
-    language: "KR"
+    language: "KR",
   });
 
   const response = await openWeather.getCurrentWeatherByGeoCoordinates(
