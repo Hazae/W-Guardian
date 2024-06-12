@@ -2,6 +2,7 @@ import styled from "styled-components";
 import CityName from "@/components/city-name";
 import Temperature from "@/components/temperature";
 import TodayDate from "@/components/date";
+import WeatherDescription from "@/components/weather-description";
 import { useCurrentLocation } from "@/hooks/useGeoLocation";
 import useWeather from "@/hooks/useWeather";
 
@@ -19,6 +20,11 @@ const Home: React.FC = () => {
     <Container className="mx-auto my-auto">
       <TodayDate />
       <CityName weatherData={data} isLoading={isLoading} error={error} />
+      <WeatherDescription
+        weatherData={data}
+        isLoading={isLoading}
+        error={error}
+      />
       <Temperature weatherData={data} isLoading={isLoading} error={error} />
     </Container>
   );
