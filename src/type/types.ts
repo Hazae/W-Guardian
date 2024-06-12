@@ -1,3 +1,10 @@
+interface Weather {
+  description: string;
+  icon: string;
+  id: number;
+  main: string;
+}
+
 export interface WeatherData {
   name: string;
   main: {
@@ -6,6 +13,7 @@ export interface WeatherData {
     temp_max: number;
     temp_min: number;
   };
+  weather: Weather[];
 }
 
 export interface WeatherAPIError extends Error {
@@ -19,7 +27,7 @@ export interface WeatherAPIError extends Error {
 }
 
 export interface WeatherProps {
-  weatherData: WeatherData;
+  weatherData: WeatherData | undefined;
   isLoading: boolean;
-  error: WeatherAPIError;
+  error: WeatherAPIError | null;
 }
