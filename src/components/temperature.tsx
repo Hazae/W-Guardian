@@ -11,18 +11,18 @@ const Temperature: React.FC<WeatherProps> = ({
   if (isLoading) return <div>로딩 중...</div>;
   if (error) return <div>오류 발생: {error.message}</div>;
 
-  return <CityTempCon>{Math.floor(temperature)}°C</CityTempCon>;
+  return <CityTempCon>{Math.floor(temperature)}°</CityTempCon>;
 };
 
 const CityTempCon = styled.div`
-  font-size: 1.5rem;
+  font-size: 3rem;
   position: absolute;
   bottom: 4.5rem;
   right: 1.25rem;
-  background-color: #fff;
   text-align: center;
   line-height: 2rem;
   padding: 0.15rem;
+  color: #233947;
 `;
 
 export default Temperature;
