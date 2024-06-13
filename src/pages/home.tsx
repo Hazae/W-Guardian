@@ -15,6 +15,8 @@ const geolocationOptions = {
 
 const bgBright = "01d" || "02d" || "50d" || "50n";
 const bgCloudy = "03d" || "04d" || "10d";
+const barNight = "01n" || "04n";
+const barPosition = "02d" || "04d";
 
 const Container = styled.div<{ $bgcolor?: string }>`
   width: 100vw;
@@ -28,6 +30,33 @@ const Container = styled.div<{ $bgcolor?: string }>`
       : "#233947"};
 `;
 
+const Bar = styled.div<{ $colorposition?: string }>`
+  width: 10.5rem;
+  height: 5px;
+  position: absolute;
+  top: ${(props) =>
+    props.$colorposition === "01d"
+      ? "45%"
+      : props.$colorposition === barPosition ||
+        props.$colorposition === barNight
+      ? "55%"
+      : "-99%"};
+  right: 0;
+  transform: ${(props) =>
+    props.$colorposition === "01d"
+      ? "translateY(-45%)"
+      : props.$colorposition === barPosition ||
+        props.$colorposition === barNight
+      ? "translateY(-55%)"
+      : "0"};
+  background-color: ${(props) =>
+    props.$colorposition === barNight
+      ? "#a2d6ea"
+      : props.$colorposition === "01d" || props.$colorposition === "02d"
+      ? "#233947"
+      : "transparent"};
+`;
+
 const Home: React.FC = () => {
   const { loc } = useCurrentLocation(geolocationOptions);
   const { data, isLoading, error } = useWeather(loc?.latitude, loc?.longitude);
@@ -37,6 +66,7 @@ const Home: React.FC = () => {
       <TodayDate />
       <CityName weatherData={data} isLoading={isLoading} error={error} />
       <WeatherIcons weatherData={data} isLoading={isLoading} error={error} />
+      <Bar $colorposition={data?.weather[0].icon} />
       <WeatherDescription
         weatherData={data}
         isLoading={isLoading}
