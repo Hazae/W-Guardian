@@ -19,13 +19,10 @@ const TodayDate: React.FC = () => {
 
 const DateCon = styled.div`
   font-size: 1.5rem;
-  position: absolute;
-  top: 3rem;
-  left: 1.25rem;
   background-color: #fff;
   text-align: center;
-  line-height: 2rem;
   padding: 0.15rem;
+  color: #233947;
 `;
 
 export default TodayDate;

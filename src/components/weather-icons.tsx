@@ -24,4 +24,9 @@ const IconsCon = styled.div`
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
+  width: 70%;
+
+  & img {
+    width: 100%;
+  }
 `;
