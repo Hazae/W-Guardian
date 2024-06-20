@@ -6,15 +6,16 @@ import { WeatherIcons } from "@/components/weather-icons";
 import WeatherDescription from "@/components/weather-description";
 import { useCurrentLocation } from "@/hooks/useGeoLocation";
 import useWeather from "@/hooks/useWeather";
+import Header from "./header";
 
 const geolocationOptions = {
   enableHighAccuracy: true,
   timeout: 1000 * 10, // 10초
-  maximumAge: 1000 * 3600 * 24, // 24시간
+  maximumAge: 1000 * 3600 * 1, // 1시간
 };
 
 const bgBright = ["01d", "02d", "50d", "50n"];
-const bgCloudy = ["03d", "04d", "10d"];
+const bgCloudy = ["03d", "04d", "10d", "11d"];
 const barNight = ["01n", "04n"];
 const barPosition = ["02d", "04d"];
 
@@ -54,7 +55,7 @@ const Bar = styled.div<{ $colorposition: string }>`
 const TopText = styled.div`
   width: 40%;
   margin-left: 5%;
-  padding-top: 15%;
+  padding-top: 10%;
 `;
 
 const Home: React.FC = () => {
@@ -65,6 +66,7 @@ const Home: React.FC = () => {
 
   return (
     <Container className="mx-auto my-auto" $bgcolor={propsForCSS}>
+      <Header $textcolor={propsForCSS} />
       <TopText>
         <TodayDate />
         <CityName weatherData={data} isLoading={isLoading} error={error} />
