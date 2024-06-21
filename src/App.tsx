@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Home from "./pages/home";
-import { Week } from "./pages/week";
+import Week from "./pages/week";
 
 const queryClient = new QueryClient();
 

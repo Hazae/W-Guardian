@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+const bgBright = ["01d", "02d", "50d"];
+const bgCloudy = ["03d", "04d", "10d", "11d"];
+
 const Header: React.FC<{ $textcolor: string }> = ({ $textcolor }) => {
   return (
     <HeaderCon $textcolor={$textcolor}>
@@ -22,7 +25,10 @@ const HeaderCon = styled.header<{ $textcolor: string }>`
 
     & a {
       text-decoration: underline;
-      color: ;
+      color: ${(props) =>
+        (bgBright.includes(props.$textcolor) && "#233947") ||
+        (bgCloudy.includes(props.$textcolor) && "#233947") ||
+        "#dbe1da"};
     }
   }
 `;
