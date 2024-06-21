@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { fetchWeather } from "../components/weather-data";
+import { fetchWeather } from "../api/weather-data";
 import { WeatherData, WeatherAPIError } from "../type/types";
 
 const useWeather = (lat: number | undefined, lon: number | undefined) => {
