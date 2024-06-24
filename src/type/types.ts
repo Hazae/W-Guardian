@@ -1,7 +1,7 @@
 import OpenWeatherMap from "openweathermap-ts";
 
-export type WeatherData = ReturnType<
-  OpenWeatherMap["getCurrentWeatherByGeoCoordinates"]
+export type WeatherData = Awaited<
+  ReturnType<OpenWeatherMap["getCurrentWeatherByGeoCoordinates"]>
 >;
 
 export interface WeatherAPIError extends Error {
