@@ -20,6 +20,6 @@ export interface WeatherProps {
   error: WeatherAPIError | null;
 }
 
-export type WeatherForecastResponse = ReturnType<
-  OpenWeatherMap["getThreeHourForecastByGeoCoordinates"]
+export type WeatherForecastResponse = Awaited<
+  ReturnType<OpenWeatherMap["getThreeHourForecastByGeoCoordinates"]>
 >;

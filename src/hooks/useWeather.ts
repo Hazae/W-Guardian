@@ -1,8 +1,16 @@
 import { useQuery } from "react-query";
-import { fetchWeather } from "../api/weather-data";
-import { WeatherData, WeatherAPIError } from "../type/types";
+import fetchWeather from "../api/weather-data";
+import {
+  WeatherData,
+  WeatherAPIError,
+  WeatherForecastResponse,
+} from "../type/types";
+import fetch5dayWeather from "@/api/5days-weather-data";
 
-const useWeather = (lat: number | undefined, lon: number | undefined) => {
+export const useCurWeather = (
+  lat: number | undefined,
+  lon: number | undefined
+) => {
   return useQuery<WeatherData, WeatherAPIError>(
     ["weather", { lat, lon }],
     fetchWeather,
@@ -15,4 +23,18 @@ const useWeather = (lat: number | undefined, lon: number | undefined) => {
   );
 };
 
-export default useWeather;
+export const useWeathers = (
+  lat: number | undefined,
+  lon: number | undefined
+) => {
+  return useQuery<WeatherForecastResponse, WeatherAPIError>(
+    ["5days-weather", { lat, lon }],
+    fetch5dayWeather,
+    {
+      enabled: !!lat && !!lon,
+      retry: 1,
+      staleTime: 1000 * 600,
+      cacheTime: 1000 * 600,
+    }
+  );
+};
