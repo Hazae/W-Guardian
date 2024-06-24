@@ -14,7 +14,7 @@ const Temperature: React.FC<WeatherProps> = ({
 
   return (
     <CityTempCon $textcolor={propsForCSS}>
-      {Math.floor(temperature)}°
+      {Math.round(temperature)}°
     </CityTempCon>
   );
 };
