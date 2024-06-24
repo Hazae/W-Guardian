@@ -5,7 +5,7 @@ import TodayDate from "@/components/date";
 import { WeatherIcons } from "@/components/weather-icons";
 import WeatherDescription from "@/components/weather-description";
 import { useCurrentLocation } from "@/hooks/useGeoLocation";
-import useWeather from "@/hooks/useWeather";
+import { useCurWeather } from "@/hooks/useWeather";
 import Header from "./header";
 
 const geolocationOptions = {
@@ -60,9 +60,15 @@ const TopText = styled.div`
 
 const Home: React.FC = () => {
   const { loc } = useCurrentLocation(geolocationOptions);
-  const { data, isLoading, error } = useWeather(loc?.latitude, loc?.longitude);
+  const { data, isLoading, error } = useCurWeather(
+    loc?.latitude,
+    loc?.longitude
+  );
 
   const propsForCSS = data?.weather[0].icon as string;
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (error) return <div>오류 발생: {error.message}</div>;
 
   return (
     <Container className="mx-auto my-auto" $bgcolor={propsForCSS}>
