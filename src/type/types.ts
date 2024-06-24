@@ -1,20 +1,8 @@
-interface Weather {
-  description: string;
-  icon: string;
-  id: number;
-  main: string;
-}
+import OpenWeatherMap from "openweathermap-ts";
 
-export interface WeatherData {
-  name: string;
-  main: {
-    temp: number;
-    humidity: number;
-    temp_max: number;
-    temp_min: number;
-  };
-  weather: Weather[];
-}
+export type WeatherData = ReturnType<
+  OpenWeatherMap["getCurrentWeatherByGeoCoordinates"]
+>;
 
 export interface WeatherAPIError extends Error {
   response?: {
@@ -31,3 +19,7 @@ export interface WeatherProps {
   isLoading: boolean;
   error: WeatherAPIError | null;
 }
+
+export type WeatherForecastResponse = ReturnType<
+  OpenWeatherMap["getThreeHourForecastByGeoCoordinates"]
+>;
