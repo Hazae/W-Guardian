@@ -55,7 +55,7 @@ const Bar = styled.div<{ $colorposition: string }>`
 const TopText = styled.div`
   width: 40%;
   margin-left: 5%;
-  padding-top: 10%;
+  padding-top: 20%;
 `;
 
 const Home: React.FC = () => {
