@@ -18,6 +18,10 @@ const Header: React.FC<{ $textcolor: string }> = ({ $textcolor }) => {
 const HeaderCon = styled.header<{ $textcolor: string }>`
   padding-top: 1.25rem;
   margin-left: 5%;
+  background-color: transparent;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
 
   & nav {
     display: flex;
