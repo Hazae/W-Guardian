@@ -7,6 +7,7 @@ import WeatherDescription from "@/components/weather-description";
 import { useCurrentLocation } from "@/hooks/useGeoLocation";
 import { useCurWeather } from "@/hooks/useWeather";
 import Header from "./header";
+import useWeather from "@/hooks/useWeather";
 
 const geolocationOptions = {
   enableHighAccuracy: true,
