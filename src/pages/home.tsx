@@ -13,10 +13,10 @@ const geolocationOptions = {
   maximumAge: 1000 * 3600 * 24, // 24시간
 };
 
-const bgBright = ["01d", "02d", "50d", "50n"];
-const bgCloudy = ["03d", "04d", "10d"];
-const barNight = ["01n", "04n"];
-const barPosition = ["02d", "04d"];
+const bgBright = ["01d", "02d", "50d"];
+const bgCloudy = ["03d", "04d", "10d", "11d"];
+const barNight = ["01n", "04n", "50n"];
+const barPosition = ["02d", "03d", "04d"];
 
 const Container = styled.div<{ $bgcolor: string }>`
   width: 100vw;
@@ -47,6 +47,7 @@ const Bar = styled.div<{ $colorposition: string }>`
     (barNight.includes(props.$colorposition) && "#a2d6ea") ||
     (props.$colorposition === "01d" && "#233947") ||
     (props.$colorposition === "02d" && "#233947") ||
+    (props.$colorposition === "03d" && "#233947") ||
     (props.$colorposition === "04d" && "#233947") ||
     "transparent"};
 `;
