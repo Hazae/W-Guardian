@@ -48,6 +48,7 @@ const Bar = styled.div<{ $colorposition: string }>`
     (barNight.includes(props.$colorposition) && "#a2d6ea") ||
     (props.$colorposition === "01d" && "#233947") ||
     (props.$colorposition === "02d" && "#233947") ||
+    (props.$colorposition === "03d" && "#233947") ||
     (props.$colorposition === "04d" && "#233947") ||
     "transparent"};
 `;
