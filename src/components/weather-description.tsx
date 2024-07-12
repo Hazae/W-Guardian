@@ -22,6 +22,8 @@ const WeatherDescription: React.FC<WeatherProps> = ({
       "약간의 구름이 낀 하늘",
       "약간 흐림"
     );
+  else if (weatherData?.weather[0].description.includes("박무"))
+    description = weatherData?.weather[0].description.replace("박무", "안개");
   else description = weatherData?.weather[0].description;
 
   if (isLoading) return <div>로딩 중...</div>;
