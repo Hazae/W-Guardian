@@ -3,6 +3,7 @@ import { useWeathers } from "@/hooks/useWeather";
 import styled from "styled-components";
 import Header from "./header";
 import useClosestWeather from "@/hooks/useClosestWeather";
+import { useState } from "react";
 
 const geolocationOptions = {
   enableHighAccuracy: true,
@@ -17,12 +18,14 @@ const Week: React.FC = () => {
   const { loc } = useCurrentLocation(geolocationOptions);
   const { data, isLoading, error } = useWeathers(loc?.latitude, loc?.longitude);
   const closestWeather = useClosestWeather(data);
+  const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
   if (isLoading) return <div>로딩 중...</div>;
   if (error) return <div>오류 발생: {error.message}</div>;
 
   if (data) {
-    console.log(closestWeather);
+    // console.log(data);
+    // console.log(closestWeather);
 
     const dtTime = closestWeather?.dt_txt.split(" ")[1] as string;
 
@@ -37,11 +40,16 @@ const Week: React.FC = () => {
           {filteredWeather.slice(0, 4).map((item, index) => (
             <Box
               key={item.dt}
-              className={`box ${index === 0 ? "focused" : ""}`}
+              className={`box ${index === focusedIndex ? "focused" : ""} ${
+                focusedIndex === 0 && index !== 0 ? "shifted" : ""
+              }`}
               onClick={(e) => {
                 const boxes = document.querySelectorAll(".box");
-                boxes.forEach((box) => box.classList.remove("focused"));
+                boxes.forEach((box) =>
+                  box.classList.remove("focused", "shifted")
+                );
                 e.currentTarget.classList.add("focused");
+                setFocusedIndex(index);
               }}
               $bgcolor={item.weather[0].icon}
               $idx={index}
@@ -72,6 +80,8 @@ const Week: React.FC = () => {
                       "약간의 구름이 낀 하늘",
                       "약간 흐림"
                     );
+                  else if (item.weather[0].description.includes("박무"))
+                    return item.weather[0].description.replace("박무", "안개");
                   else return item.weather[0].description;
                 })()}
               </div>
@@ -83,16 +93,16 @@ const Week: React.FC = () => {
   }
 };
 
-const WeekCon = styled.div`
+const WeekCon = styled.main`
   width: 100vw;
   height: 100vh;
   font-size: 1rem;
   position: relative;
-  // display: flex;
+  overflow: hidden;
 `;
 
 const Box = styled.div<{ $bgcolor: string; $idx: number }>`
-  width: 35%;
+  width: 37%;
   height: 100vh;
   position: absolute;
   top: 0;
@@ -105,6 +115,11 @@ const Box = styled.div<{ $bgcolor: string; $idx: number }>`
   box-shadow: 10px 0px 20px 2px rgba(0, 0, 0, 0.2);
   padding-top: 10%;
 
+  .icon-box {
+    width: 80%;
+    margin: 0 auto;
+  }
+
   .week-description {
     text-align: center;
     padding: 5%;
@@ -114,17 +129,15 @@ const Box = styled.div<{ $bgcolor: string; $idx: number }>`
   }
 
   &.focused {
-    // width: 60%;
-    left: ${(props) => props.$idx * 25 - 10}%;
-
-    // .icon-box {
-    //   width: 80%;
-    //   margin: 0 auto;
-    // }
+    left: ${(props) => (props.$idx === 0 ? props.$idx : props.$idx * 25 - 11)}%;
 
     .week-description {
       background-color: rgba(255, 255, 255, 0.5);
     }
+  }
+
+  &.shifted {
+    left: ${(props) => props.$idx * 25 + 10}%;
   }
 `;
 
