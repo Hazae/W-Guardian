@@ -17,8 +17,9 @@ export const useCurWeather = (
     {
       enabled: !!lat && !!lon, // lat과 lon이 모두 유효할 때만 쿼리를 활성화
       retry: 1,
-      staleTime: 1000 * 600, // 10분
-      cacheTime: 1000 * 600,
+      staleTime: 1000 * 300,
+      cacheTime: 1000 * 600, // 10분
+      keepPreviousData: true,
     }
   );
 };
@@ -33,8 +34,9 @@ export const useWeathers = (
     {
       enabled: !!lat && !!lon,
       retry: 1,
-      staleTime: 1000 * 600,
+      staleTime: 1000 * 300,
       cacheTime: 1000 * 600,
+      keepPreviousData: true,
     }
   );
 };

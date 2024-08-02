@@ -1,14 +1,18 @@
 @font-face {
   font-family: "Godo";
   font-style: normal;
-  font-weight: 400;
-  src: url("../fonts/GodoM.otf") format("otf");
+  font-weight: normal;
+  src: url("../fonts/GodoM.woff2") format("woff2"),
+    url("../fonts/GodoM.woff") format("woff"),
+    url("../fonts/GodoM.otf") format("otf");
 }
 @font-face {
   font-family: "Godo";
   font-style: normal;
-  font-weight: 700;
-  src: url("../fonts/GodoB.otf") format("otf");
+  font-weight: bold;
+  src: url("../fonts/GodoB.woff2") format("woff2"),
+    url("../fonts/GodoB.woff") format("woff"),
+    url("../fonts/GodoB.otf") format("otf");
 }
 @font-face {
   font-family: "Glacial";
