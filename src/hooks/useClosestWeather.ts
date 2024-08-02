@@ -1,21 +1,23 @@
 import { WeatherForecastResponse } from "@/type/types";
 
 const useClosestWeather = (data: WeatherForecastResponse | undefined) => {
-  if (!data || !data.list) return null;
-
   const now = new Date();
-  let closest = data.list[0];
-  let minDiff = Math.abs(new Date(closest.dt_txt).getTime() - now.getTime());
+  let closest;
 
-  data.list.forEach((item) => {
-    const itemTime = new Date(item.dt_txt).getTime();
-    const diff = Math.abs(itemTime - now.getTime());
+  if (data) {
+    closest = data.list[0];
+    let minDiff = Math.abs(new Date(closest.dt_txt).getTime() - now.getTime());
 
-    if (diff < minDiff) {
-      closest = item;
-      minDiff = diff;
-    }
-  });
+    data.list.forEach((item) => {
+      const itemTime = new Date(item.dt_txt).getTime();
+      const diff = Math.abs(itemTime - now.getTime());
+
+      if (diff < minDiff) {
+        closest = item;
+        minDiff = diff;
+      }
+    });
+  }
 
   return closest;
 };
