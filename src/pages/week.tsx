@@ -24,6 +24,7 @@ const Week: React.FC = () => {
     WeatherForecastResponse["list"] | null
   >(null);
 
+  // 데이터가 변경되면 filteredWeather도 새로 필터링
   useEffect(() => {
     if (data && closestWeather) {
       const dtTime = closestWeather.dt_txt.split(" ")[1];
@@ -40,6 +41,8 @@ const Week: React.FC = () => {
   }, [filteredWeather]);
 
   console.log(filteredWeather);
+
+  // 할 일: 최고/최저 기온 data에서 같은 날짜라면 다 뒤져서 뭐가 큰 지 비교한 뒤에 UI에 반영,  UTC 시간 변환
 
   const todayText: string[] = ["오늘", "내일", "모레", "글피"];
   const thermoScale: number[] = [1, 2, 3, 4, 5, 6, 7];
