@@ -23,3 +23,12 @@ export interface WeatherProps {
 export type WeatherForecastResponse = Awaited<
   ReturnType<OpenWeatherMap["getThreeHourForecastByGeoCoordinates"]>
 >;
+
+export type WeatherForecastList = Pick<WeatherForecastResponse, "list">["list"];
+
+export type WeekBoxProps = {
+  item: WeatherForecastList[number];
+  index: number;
+  focusedIndex: number;
+  setFocusedIndex: (index: number) => void;
+};
