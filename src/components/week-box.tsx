@@ -66,48 +66,6 @@ const Box = styled.div<{ $bgcolor: string; $idx: number }>`
   &.shifted {
     left: ${(props) => props.$idx * 25 + 10}%;
   }
-
-  .temp-max-text,
-  .temp-min-text {
-    color: ${(props) => (props.$bgcolor.includes("n") ? "#fff" : "#233947")};
-    text-align: center;
-    margin: 6vh auto;
-  }
-
-  .thermometer {
-    width: 5vw;
-    height: 25vh;
-    background-color: white;
-    margin: 0 auto;
-    border-radius: 20px;
-    border: 0.5px solid gray;
-    position: relative;
-
-    .thermo-scale {
-      position: absolute;
-      left: 0;
-      width: 70%;
-      height: 1px;
-      background-color: gray;
-    }
-
-    .temp-max,
-    .temp-min {
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      border-radius: 20px;
-    }
-
-    .temp-max {
-      background-color: #cc3216;
-    }
-
-    .temp-min {
-      background-color: #094063;
-    }
-  }
 `;
 
 const WeekBox: React.FC<WeekBoxProps> = ({

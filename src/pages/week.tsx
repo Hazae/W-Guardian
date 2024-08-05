@@ -4,7 +4,6 @@ import styled from "styled-components";
 import Header from "./header";
 import useClosestWeather from "@/hooks/useClosestWeather";
 import { useCallback, useMemo, useState } from "react";
-// import { WeatherForecastList } from "@/type/types";
 import WeekBox from "@/components/week-box";
 
 const geolocationOptions = {
@@ -18,10 +17,8 @@ const Week: React.FC = () => {
   const { data, isLoading, error } = useWeathers(loc?.latitude, loc?.longitude);
   const closestWeather = useClosestWeather(data);
   const [focusedIndex, setFocusedIndex] = useState<number>(0);
-  // const [filteredWeather, setFilteredWeather] = useState<WeatherForecastList>(
-  //   []
-  // );
 
+  // 데이터가 변경되면 filteredWeather도 새로 필터링
   const filteredWeather = useMemo(() => {
     if (data && closestWeather) {
       const dtTime = closestWeather.dt_txt.split(" ")[1];
@@ -33,15 +30,6 @@ const Week: React.FC = () => {
   const handleFocusChange = useCallback((index: number) => {
     setFocusedIndex(index);
   }, []);
-
-  // 데이터가 변경되면 filteredWeather도 새로 필터링
-  // useEffect(() => {
-  //   if (data && closestWeather) {
-  //     const dtTime = closestWeather.dt_txt.split(" ")[1];
-  //     const filtered = data.list.filter((item) => item.dt_txt.includes(dtTime));
-  //     setFilteredWeather(filtered);
-  //   }
-  // }, [data, closestWeather]);
 
   // 할 일: 최고/최저 기온 data에서 같은 날짜라면 다 뒤져서 뭐가 큰 지 비교한 뒤에 UI에 반영
 
