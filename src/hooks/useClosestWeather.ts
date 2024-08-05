@@ -1,32 +1,46 @@
-import { WeatherForecastResponse } from "@/type/types";
-
-// UTC 시간 변환 사이트: https://wei756.tistory.com/28
-// https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/Date
+import { useState, useEffect, useRef, useCallback } from "react";
+import { WeatherForecastResponse, WeatherForecastList } from "@/type/types";
 
 const useClosestWeather = (data: WeatherForecastResponse | undefined) => {
-  const now = new Date();
-  let closest;
-  let timezone: number;
+  const [closestWeather, setClosestWeather] = useState<
+    WeatherForecastList[number] | null
+  >(null);
+  const prevDataRef = useRef<WeatherForecastResponse>();
 
-  if (data) {
-    closest = data.list[0];
-    timezone = data.city.timezone;
-    let minDiff = Math.abs(
-      new Date((closest.dt + timezone) * 1000).getTime() - now.getTime()
-    );
+  // 메모이제이션
+  const findClosestWeather = useCallback(
+    (weatherData: WeatherForecastResponse) => {
+      const now = new Date();
+      let closest = weatherData.list[0];
+      let minDiff = Math.abs(
+        new Date(closest.dt * 1000).getTime() - now.getTime()
+      );
 
-    data.list.forEach((item) => {
-      const itemTime = new Date((item.dt + timezone) * 1000).getTime();
-      const diff = Math.abs(itemTime - now.getTime());
-
-      if (diff < minDiff) {
-        closest = item;
-        minDiff = diff;
+      for (let i = 1; i < weatherData.list.length; i++) {
+        const itemTime = new Date(weatherData.list[i].dt * 1000).getTime();
+        const diff = Math.abs(itemTime - now.getTime());
+        if (diff < minDiff) {
+          minDiff = diff;
+          closest = weatherData.list[i];
+        }
       }
-    });
-  }
 
-  return closest;
+      return closest;
+    },
+    []
+  );
+
+  useEffect(() => {
+    if (data && data !== prevDataRef.current) {
+      const closest = findClosestWeather(data);
+      if (!closestWeather || closest.dt !== closestWeather.dt) {
+        setClosestWeather(closest);
+      }
+      prevDataRef.current = data;
+    }
+  }, [data, findClosestWeather]);
+
+  return closestWeather;
 };
 
 export default useClosestWeather;
