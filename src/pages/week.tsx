@@ -31,8 +31,6 @@ const Week: React.FC = () => {
     setFocusedIndex(index);
   }, []);
 
-  // 할 일: 최고/최저 기온 data에서 같은 날짜라면 다 뒤져서 뭐가 큰 지 비교한 뒤에 UI에 반영
-
   if (isLoading) return <div>로딩 중...</div>;
   if (error) return <div>오류 발생: {error.message}</div>;
 
