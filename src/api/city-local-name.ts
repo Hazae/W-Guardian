@@ -17,7 +17,7 @@ export const fetchGeocode = async (
   const localName = response?.local_names.ko as string;
 
   if (!localName) {
-    throw new Error("Korean local name not found in the geocode data");
+    throw new Error("City local name not found in the geocode data");
   }
 
   return localName;

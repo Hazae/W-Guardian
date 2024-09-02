@@ -76,7 +76,7 @@ const WeekBox: React.FC<WeekBoxProps> = ({
 }) => {
   const todayText: string[] = ["오늘", "내일", "모레", "글피"];
 
-  console.log(item);
+  // console.log(item);
 
   return (
     <Box

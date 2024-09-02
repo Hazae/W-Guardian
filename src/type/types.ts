@@ -32,3 +32,9 @@ export type WeekBoxProps = {
   focusedIndex: number;
   setFocusedIndex: (index: number) => void;
 };
+
+export type TempMaxMinProps = {
+  tempMax: number;
+  tempMin: number;
+  bgColor: string;
+};
