@@ -73,10 +73,14 @@ const WeekBox: React.FC<WeekBoxProps> = ({
   index,
   focusedIndex,
   setFocusedIndex,
+  dailyTemp,
 }) => {
-  const todayText: string[] = ["오늘", "내일", "모레", "글피"];
-
-  // console.log(item);
+  // const todayText: string[] = ["오늘", "내일", "모레", "글피"];
+  const dateText: string[] = dailyTemp.map((x) => {
+    const splitDt = x.date.split("-");
+    splitDt.shift();
+    return splitDt.join(".");
+  });
 
   return (
     <Box
@@ -94,7 +98,7 @@ const WeekBox: React.FC<WeekBoxProps> = ({
       $idx={index}
     >
       <div className="today-text">
-        <p className="kr">{todayText[index]}</p>
+        <p className="kr">{dateText[index]}</p>
       </div>
       <div className="temp-text">{Math.round(item.main.temp)}°</div>
       <div className="icon-box">
@@ -125,8 +129,8 @@ const WeekBox: React.FC<WeekBoxProps> = ({
         })()}
       </div>
       <TempMaxMin
-        tempMax={item.main.temp_max}
-        tempMin={item.main.temp_min}
+        tempMax={dailyTemp[index].tempMax}
+        tempMin={dailyTemp[index].tempMin}
         bgColor={item.weather[0].icon}
       />
     </Box>
