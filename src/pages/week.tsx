@@ -5,6 +5,7 @@ import Header from "./header";
 import useClosestWeather from "@/hooks/useClosestWeather";
 import { useCallback, useMemo, useState } from "react";
 import WeekBox from "@/components/week-box";
+import useTempMinMax from "@/hooks/useTempMinMax";
 
 const geolocationOptions = {
   enableHighAccuracy: true,
@@ -16,6 +17,7 @@ const Week: React.FC = () => {
   const { loc } = useCurrentLocation(geolocationOptions);
   const { data, isLoading, error } = useWeathers(loc?.latitude, loc?.longitude);
   const closestWeather = useClosestWeather(data);
+  const tempMinMax = useTempMinMax(data);
   const [focusedIndex, setFocusedIndex] = useState<number>(0);
 
   // 데이터가 변경되면 filteredWeather도 새로 필터링
@@ -46,6 +48,7 @@ const Week: React.FC = () => {
               index={index}
               focusedIndex={focusedIndex}
               setFocusedIndex={handleFocusChange}
+              dailyTemp={tempMinMax}
             />
           ))}
         </WeekCon>

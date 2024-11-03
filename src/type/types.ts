@@ -31,6 +31,11 @@ export type WeekBoxProps = {
   index: number;
   focusedIndex: number;
   setFocusedIndex: (index: number) => void;
+  dailyTemp: {
+    date: string;
+    tempMax: number;
+    tempMin: number;
+  }[];
 };
 
 export type TempMaxMinProps = {
