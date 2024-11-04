@@ -1,5 +1,14 @@
 # W-Guardian: open API 활용 날씨 애플리케이션
 
+## 기술 스택
+
+- 소스 코드 번들러: VITE
+- 프레임워크: ReactJS
+- 라이브러리: SCSS, Styled-component, react-router-dom, axios, Tanstack Query(React-Query)
+- API: Openweather API(package: openweathermap-ts)
+
+
+
 ## API
 
 ### OpenWeather
@@ -21,6 +30,10 @@ API로 반환된 데이터 배열의 8n번째 원소값이 동일한 시간의 �
 
 기본적으로 제공하는 아이콘 목록은 위 이미지와 같습니다. 더불어서 **Weather condition code**로 날씨 정보를 함께 전달해 이를 바탕으로 기능을 개발할 수 있습니다.
 
+### React-Query와 함께라면 어디든 좋아!
+
+
+
 ## 애플리케이션 디자인
 
 ### 메인 페이지
@@ -36,3 +49,4 @@ API로 반환된 데이터 배열의 8n번째 원소값이 동일한 시간의 �
 ### 주간 페이지
 
 ![주간](public/readme/week.png)
+
