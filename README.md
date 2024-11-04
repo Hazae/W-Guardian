@@ -1,27 +1,36 @@
-# React + TypeScript + Vite
+# W-Guardian: open API 활용 날씨 애플리케이션
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## API
 
-Currently, two official plugins are available:
+### OpenWeather
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[OpenWeather](https://openweathermap.org/api) API는 날씨 애플리케이션을 만들기에 최적화된 기능을 제공합니다. 현재 날씨, 시간별 날씨, 30일 날씨, 5일 / 3시간 단위 날씨 등 다양한 API를 받아서 기능을 구현할 수 있고, 무엇보다 무료로 API를 제공하기 때문에 이를 활용하기가 좋았습니다.
 
-## Expanding the ESLint configuration
+#### 5 Day / 3 Hour Forecast
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+여러 API 중 기준일 포함 3일의 날씨를 보여주는 페이지를 염두에 두고 있었기 때문에 해당 API를 선택해 개발했습니다.
 
-- Configure the top-level `parserOptions` property like this:
+동시에 [openweathermap-ts
+](https://www.npmjs.com/package/openweathermap-ts)에서 이 API를 지원하고 있었습니다. 패키지 관리가 최근에는 되지 않고 있다는 점이 다소 흠이었지만, 기능을 활용하는 데에는 전혀 문제가 없었고 무료 API만 지원하기 때문에 후일에도 변동될 일이 적다는 점에서 활용할 수 있었습니다.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+#### weather icon
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+![날씨 아이콘](public/readme/image.png)
+
+기본적으로 제공하는 아이콘 목록은 위 이미지와 같습니다. 더불어서 **Weather condition code**로 날씨 정보를 함께 전달해 이를 바탕으로 기능을 개발할 수 있습니다.
+
+## 애플리케이션 디자인
+
+### 메인 페이지
+
+#### 1. 낮(혹은 약간 흐림)
+
+![낮](public/readme/day.png)
+
+#### 2. 비(혹은 밤)
+
+![비(혹은 밤)](public/readme/rain.png)
+
+### 주간 페이지
+
+![주간](public/readme/week.png)

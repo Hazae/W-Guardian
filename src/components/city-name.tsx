@@ -1,17 +1,23 @@
 import styled from "styled-components";
 import { WeatherProps } from "../type/types";
+import { fetchGeocode } from "@/api/city-local-name";
+import { useQuery } from "react-query";
 
 const CityName: React.FC<WeatherProps> = ({
   weatherData,
   isLoading,
   error,
 }) => {
-  let city = "";
-
-  if (weatherData?.name.includes("-si"))
-    city = weatherData?.name.replace("-si", "");
-  else if (weatherData?.name.includes("-dong"))
-    city = weatherData?.name.replace("-dong", "");
+  const { data: city } = useQuery(
+    ["geocode", weatherData?.name],
+    () => fetchGeocode(weatherData?.name),
+    {
+      enabled: !!weatherData?.name, // weatherData.name이 존재할 때만 쿼리 실행
+      retry: 1,
+      staleTime: 1000 * 600, // 10분
+      cacheTime: 1000 * 600,
+    }
+  );
 
   if (isLoading) return <div>로딩 중...</div>;
   if (error) return <div>오류 발생: {error.message}</div>;

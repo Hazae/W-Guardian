@@ -4,7 +4,7 @@ import { WeatherData } from "../type/types";
 
 const apiKey = import.meta.env.VITE_WEATHER_KEY;
 
-export const fetchWeather = async ({
+const fetchWeather = async ({
   queryKey,
 }: QueryFunctionContext): Promise<WeatherData> => {
   const [key, { lat, lon }] = queryKey as [
@@ -22,5 +22,8 @@ export const fetchWeather = async ({
     lat,
     lon
   );
+
   return response;
 };
+
+export default fetchWeather;
