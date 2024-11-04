@@ -7,10 +7,7 @@ const apiKey = import.meta.env.VITE_WEATHER_KEY;
 const fetch5dayWeather = async ({
   queryKey,
 }: QueryFunctionContext): Promise<WeatherForecastResponse> => {
-  const [key, { lat, lon }] = queryKey as [
-    string,
-    { lat: number; lon: number }
-  ];
+  const [, { lat, lon }] = queryKey as [string, { lat: number; lon: number }];
 
   const openWeather = await new OpenWeatherMap({
     apiKey: apiKey,
