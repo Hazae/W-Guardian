@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { WeatherProps } from "../type/types";
+import Loading from "@/pages/loading";
 
 const Temperature: React.FC<WeatherProps> = ({
   weatherData,
@@ -9,7 +10,7 @@ const Temperature: React.FC<WeatherProps> = ({
   const temperature = weatherData?.main?.temp as number; // 타입 단언
   const propsForCSS = weatherData?.weather[0].icon as string;
 
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Loading></Loading>;
   if (error) return <div>오류 발생: {error.message}</div>;
 
   return (

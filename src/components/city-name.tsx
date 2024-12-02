@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { WeatherProps } from "../type/types";
 import { fetchGeocode } from "@/api/city-local-name";
 import { useQuery } from "react-query";
+import Loading from "@/pages/loading";
 
 const CityName: React.FC<WeatherProps> = ({
   weatherData,
@@ -25,7 +26,7 @@ const CityName: React.FC<WeatherProps> = ({
     }
   );
 
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Loading></Loading>;
   if (error) return <div>오류 발생: {error.message}</div>;
 
   return <CityNameCon className="kr">{city}</CityNameCon>;

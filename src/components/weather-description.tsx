@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { WeatherProps } from "../type/types";
+import Loading from "@/pages/loading";
 
 const WeatherDescription: React.FC<WeatherProps> = ({
   weatherData,
@@ -26,7 +27,7 @@ const WeatherDescription: React.FC<WeatherProps> = ({
     description = weatherData?.weather[0].description.replace("박무", "안개");
   else description = weatherData?.weather[0].description;
 
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Loading></Loading>;
   if (error) return <div>오류 발생: {error.message}</div>;
 
   return (

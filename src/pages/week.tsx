@@ -6,6 +6,7 @@ import useClosestWeather from "@/hooks/useClosestWeather";
 import { useCallback, useMemo, useState } from "react";
 import WeekBox from "@/components/week-box";
 import useTempMinMax from "@/hooks/useTempMinMax";
+import Loading from "./loading";
 
 const geolocationOptions = {
   enableHighAccuracy: true,
@@ -33,7 +34,7 @@ const Week: React.FC = () => {
     setFocusedIndex(index);
   }, []);
 
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Loading></Loading>;
   if (error) return <div>오류 발생: {error.message}</div>;
 
   if (data && closestWeather)

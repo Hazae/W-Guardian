@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { WeatherProps } from "../type/types";
+import Loading from "@/pages/loading";
 
 export const WeatherIcons: React.FC<WeatherProps> = ({
   weatherData,
   isLoading,
   error,
 }) => {
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Loading></Loading>;
   if (error) return <div>오류 발생: {error.message}</div>;
 
   if (weatherData)

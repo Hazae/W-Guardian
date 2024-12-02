@@ -7,6 +7,7 @@ import WeatherDescription from "@/components/weather-description";
 import { useCurrentLocation } from "@/hooks/useGeoLocation";
 import { useCurWeather } from "@/hooks/useWeather";
 import Header from "./header";
+import Loading from "./loading";
 
 const geolocationOptions = {
   enableHighAccuracy: true,
@@ -68,7 +69,7 @@ const Home: React.FC = () => {
 
   const propsForCSS = data?.weather[0].icon as string;
 
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Loading></Loading>;
   if (error) return <div>오류 발생: {error.message}</div>;
 
   return (
