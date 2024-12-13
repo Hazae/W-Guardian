@@ -15,11 +15,15 @@ const TempMaxMin: React.FC<TempMaxMinProps> = ({
       <div className="thermometer">
         <div
           className="temp-max"
-          style={{ height: `${Math.abs(tempMax) * 2 + 10}%` }}
+          style={{
+            height: `${
+              tempMax <= 0 || tempMin <= 0 ? tempMax + 20 : tempMax * 2 + 18
+            }%`,
+          }}
         ></div>
         <div
           className="temp-min"
-          style={{ height: `${Math.abs(tempMin) * 2 + 6}%` }}
+          style={{ height: `${tempMin * 1.5 + 15}%` }}
         ></div>
         {thermoScale.map((e, idx) => (
           <div
